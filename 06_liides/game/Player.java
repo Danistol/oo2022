@@ -4,13 +4,13 @@ import game.Direction;
 import game.Item;
 import game.WorldObject;
 
-public class Player implements WorldObject {
-    int coordinateY;
-    int coordinateX;
+public class Player extends Character implements WorldObject {
+
     Direction direction; // 3-ndast kodutööst
     Item item;
 
     public Player(int worldHeight, int worldWidth) {
+        super(worldHeight,worldWidth);
         this.coordinateY = generateRandomCoordinate(worldHeight);
         this.coordinateX = generateRandomCoordinate(worldWidth);
         this.direction = Direction.UP;
@@ -21,9 +21,7 @@ public class Player implements WorldObject {
         System.out.println("Mängija sai eseme + " + item.itemType);
     }
 
-    public int generateRandomCoordinate(int worldSize) {
-        return (int) ((Math.random()*(worldSize-2))+1); // cast
-    }
+
 
     public void movePlayer(String input, int worldHeight, int worldWidth) {
         switch (input) {
